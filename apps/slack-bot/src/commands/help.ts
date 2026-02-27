@@ -1,0 +1,63 @@
+import type { SlackCommandContext } from "../types";
+
+export async function registerHelpCommand(context: SlackCommandContext) {
+  await context.respond({
+    blocks: [
+      {
+        type: "header",
+        text: { type: "plain_text", text: "Inovativex ERP - Command Reference" },
+      },
+      { type: "divider" },
+      {
+        type: "section",
+        text: {
+          type: "mrkdwn",
+          text: [
+            "*General*",
+            "`/erp help` — Show this help message",
+            "`/erp dashboard` — Quick stats overview",
+            "`/erp whoami` — Your profile & role",
+            "",
+            "*Employee*",
+            "`/erp directory` — Search employee directory",
+            "`/erp org-chart` — View organization chart",
+            "`/erp employee @user` — View employee profile",
+            "",
+            "*HR & Leave*",
+            "`/erp leave apply` — Apply for leave",
+            "`/erp leave balance` — Check leave balance",
+            "`/erp leave team` — Who's out today/this week",
+            "`/erp clockin` — Clock in for the day",
+            "`/erp clockout` — Clock out for the day",
+            "`/erp payslip [month]` — Download payslip",
+            "",
+            "*Projects*",
+            "`/erp project list` — Your active projects",
+            "`/erp project [name] status` — Project status",
+            "`/erp sprint current` — Current sprint overview",
+            "`/erp standup submit` — Submit daily standup",
+            "`/erp timetrack start [task]` — Start tracking",
+            "`/erp timetrack stop` — Stop tracking",
+            "",
+            "*Finance*",
+            "`/erp invoice create` — Create invoice",
+            "`/erp expense submit` — Submit expense",
+            "",
+            "*Assets*",
+            "`/erp assets mine` — Your assigned assets",
+            "`/erp assets request` — Request new asset",
+            "",
+            "*Recruitment*",
+            "`/erp openings` — View open positions",
+            "`/erp referral submit` — Submit referral",
+            "",
+            "*Approvals*",
+            "`/erp approvals` — Pending approvals",
+            "`/erp approve [id]` — Approve request",
+            "`/erp reject [id] [reason]` — Reject request",
+          ].join("\n"),
+        },
+      },
+    ],
+  });
+}

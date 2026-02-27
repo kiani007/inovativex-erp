@@ -1,0 +1,42 @@
+{
+  "name": "@inovativex/web",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@inovativex/db": "workspace:*",
+    "@inovativex/types": "workspace:*",
+    "@inovativex/validators": "workspace:*",
+    "@inovativex/ui": "workspace:*",
+    "@inovativex/utils": "workspace:*",
+    "@supabase/ssr": "^0.6.0",
+    "@supabase/supabase-js": "^2.49.0",
+    "@tanstack/react-query": "^5.64.0",
+    "zustand": "^5.0.0",
+    "next": "^15.1.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "lucide-react": "^0.469.0",
+    "date-fns": "^4.1.0",
+    "recharts": "^2.15.0",
+    "zod": "^3.24.0",
+    "clsx": "^2.1.0",
+    "tailwind-merge": "^2.7.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "autoprefixer": "^10.4.0",
+    "postcss": "^8.5.0",
+    "tailwindcss": "^4.0.0",
+    "@tailwindcss/postcss": "^4.0.0",
+    "typescript": "^5.7.0"
+  }
+}

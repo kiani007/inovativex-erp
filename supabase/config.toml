@@ -1,0 +1,26 @@
+[project]
+id = "inovativex-erp"
+
+[api]
+enabled = true
+port = 54321
+schemas = ["public", "auth_system", "employees", "hr", "projects", "crm", "finance", "assets", "recruitment", "documents", "communications", "admin"]
+
+[db]
+port = 54322
+major_version = 15
+
+[studio]
+enabled = true
+port = 54323
+
+[auth]
+enabled = true
+site_url = "http://localhost:3000"
+additional_redirect_urls = ["http://localhost:3000/api/auth/callback"]
+
+[auth.external.google]
+enabled = true
+
+[auth.external.azure]
+enabled = true
