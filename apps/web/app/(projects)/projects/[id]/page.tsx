@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { use, useState } from "react";
 import {
   ArrowLeft,
   Users,
@@ -146,12 +146,13 @@ const tasksByStatus = [
 export default function ProjectDetailPage({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
+  const { id } = use(params);
   const [activeTab, setActiveTab] = useState<TabKey>("overview");
 
   const project = {
-    id: params.id,
+    id,
     name: "E-Commerce Platform Redesign",
     client: "RetailMax Inc.",
     status: "active",
@@ -221,7 +222,7 @@ export default function ProjectDetailPage({
                 key={tab.key}
                 onClick={() => {
                   if (tab.key === "board") {
-                    window.location.href = `/projects/${params.id}/board`;
+                    window.location.href = `/projects/${id}/board`;
                   } else {
                     setActiveTab(tab.key);
                   }

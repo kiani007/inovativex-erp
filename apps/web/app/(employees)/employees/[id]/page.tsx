@@ -11,14 +11,15 @@ import {
   Edit,
 } from "lucide-react";
 
-export default function EmployeeDetailPage({
+export default async function EmployeeDetailPage({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
-  // In production, fetch employee from Supabase using params.id
+  const { id } = await params;
+  // In production, fetch employee from Supabase using id
   const employee = {
-    id: params.id,
+    id,
     employeeId: "INX-001",
     name: "Sarah Chen",
     email: "sarah.chen@inovativex.com",

@@ -9,21 +9,26 @@ export type Database = {
       profiles: {
         Row: {
           id: string;
+          auth_user_id: string;
           email: string;
           full_name: string;
           avatar_url: string | null;
           role: string;
           department_id: string | null;
+          is_active: boolean;
+          last_login: string | null;
           created_at: string;
           updated_at: string;
         };
         Insert: {
-          id: string;
+          id?: string;
+          auth_user_id: string;
           email: string;
           full_name: string;
           avatar_url?: string | null;
           role?: string;
           department_id?: string | null;
+          is_active?: boolean;
         };
         Update: {
           email?: string;
@@ -31,8 +36,19 @@ export type Database = {
           avatar_url?: string | null;
           role?: string;
           department_id?: string | null;
+          is_active?: boolean;
+          last_login?: string;
           updated_at?: string;
         };
+        Relationships: [
+          {
+            foreignKeyName: "profiles_department_id_fkey";
+            columns: ["department_id"];
+            isOneToOne: false;
+            referencedRelation: "departments";
+            referencedColumns: ["id"];
+          }
+        ];
       };
       departments: {
         Row: {
@@ -55,6 +71,22 @@ export type Database = {
           head_id?: string | null;
           parent_id?: string | null;
         };
+        Relationships: [
+          {
+            foreignKeyName: "departments_head_id_fkey";
+            columns: ["head_id"];
+            isOneToOne: false;
+            referencedRelation: "profiles";
+            referencedColumns: ["id"];
+          },
+          {
+            foreignKeyName: "departments_parent_id_fkey";
+            columns: ["parent_id"];
+            isOneToOne: false;
+            referencedRelation: "departments";
+            referencedColumns: ["id"];
+          }
+        ];
       };
     };
     Views: Record<string, never>;

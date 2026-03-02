@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { use, useState } from "react";
 import {
   ArrowLeft,
   ChevronDown,
@@ -243,8 +243,9 @@ const columnColors: Record<string, string> = {
 export default function BoardPage({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
+  const { id } = use(params);
   const [selectedSprint, setSelectedSprint] = useState(sprints[0].id);
   const [sprintDropdownOpen, setSprintDropdownOpen] = useState(false);
 
@@ -255,7 +256,7 @@ export default function BoardPage({
       {/* Header */}
       <div>
         <a
-          href={`/projects/${params.id}`}
+          href={`/projects/${id}`}
           className="mb-4 inline-flex items-center gap-1.5 text-sm text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors"
         >
           <ArrowLeft className="h-4 w-4" />
